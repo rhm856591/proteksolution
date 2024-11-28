@@ -1,6 +1,10 @@
 'use client';
 
+import Loading from '@/components/Loading'; // Make sure this component exists
+import { toast } from '@/hooks/use-toast'; // Ensure the toast hook is correctly implemented
 import { useState } from 'react';
+import axios from 'axios';
+
 
 const ContactPage = () => {
     const [formData, setFormData] = useState({
@@ -9,29 +13,45 @@ const ContactPage = () => {
         message: '',
     });
 
+    const [loading, setLoading] = useState(false);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log(formData); // Print formData to check its contents when submitting
+    //     // Submit the form or process the data...
+
+    // };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Add form submission logic here (e.g., send to API or email)
-        alert('Thank you for contacting us! We will get back to you shortly.');
-        setFormData({ name: '', email: '', message: '' });
+        setLoading(true);
+
+        try {
+            const response = await axios.post('/api/contact', formData);
+
+            alert('Form submitted successfully!');
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            // Error toast
+            alert('An error occurred. Please try again later.');
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
         <div className="py-20 px-8 bg-gray-100">
             <div className="max-w-7xl mx-auto flex flex-col sm:pb-10 md:flex-row gap-12">
-
-                {/* Right Section: Contact Form */}
                 <div className="w-full md:w-1/2 flex flex-col justify-center px-4 md:px-8">
                     <h2 className="text-4xl font-bold text-center mb-6 text-gray-800">Contact Us</h2>
                     <p className="text-lg text-center text-gray-600 mb-8">
-                        Have questions, concerns, or need assistance? We’re here to help! Fill out the form below, and we’ll get back to you as soon as possible.
+                        Have questions, concerns, or need assistance? Fill out the form below, and we’ll get back to you as soon as possible.
                     </p>
-
                     <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-8 space-y-6">
                         <div className="mb-6">
                             <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
@@ -48,7 +68,6 @@ const ContactPage = () => {
                                 placeholder="Enter your full name"
                             />
                         </div>
-
                         <div className="mb-6">
                             <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
                                 Your Email
@@ -64,7 +83,6 @@ const ContactPage = () => {
                                 placeholder="Enter your email address"
                             />
                         </div>
-
                         <div className="mb-6">
                             <label htmlFor="message" className="block text-gray-700 font-medium mb-2">
                                 Your Message
@@ -80,17 +98,14 @@ const ContactPage = () => {
                                 rows="5"
                             ></textarea>
                         </div>
-
                         <button
                             type="submit"
-                            className="w-full bg-yellow-400 text-white px-6 py-3 rounded-lg hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full flex justify-center items-center bg-yellow-400 text-white px-6 py-3 rounded-lg hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
-                            Submit
+                            {loading ? <Loading /> : "Submit"}
                         </button>
                     </form>
                 </div>
-                
-                {/* Left Section: Google Map */}
                 <div className="w-full md:w-1/2 md:top-20 h-96 relative">
                     <h2 className="text-3xl font-bold text-center mb-4 text-gray-800">Find Us Here</h2>
                     <iframe
@@ -103,8 +118,6 @@ const ContactPage = () => {
                         referrerPolicy="no-referrer-when-downgrade"
                     ></iframe>
                 </div>
-
-                
             </div>
         </div>
     );

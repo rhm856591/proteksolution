@@ -8,6 +8,7 @@ import Success from "@/components/Success";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Gallery from "@/components/Gallery";
 import OurClients from "@/components/OurClient";
+import Loading from '@/components/Loading';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
