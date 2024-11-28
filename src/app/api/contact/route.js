@@ -1,25 +1,24 @@
 import dbConnect from "@/config/dbConnect"; // Utility to connect to MongoDB
-import Contact from "@/model/Schema"; // Path to your schema file
+import Contact from "@/model/ContactSchema"; // Path to your schema file
+import { NextResponse } from 'next/server';
 
-export default async function handler(req, res) {
+export async function POST(req, res) {
   await dbConnect();
 
-  if (req.method === "POST") {
     try {
-      const { name, email, message } = await req.body;
+      const { name, email, message } = await req.json();
 
       if (!name || !email || !message) {
-        return res.status(400).json({ error: "All fields are required" });
+        return NextResponse.json({ error: "All fields are required" });
       }
 
-      const newContact = await Contact.create({ name, email, message });
+      const newContact = await Contact({ name, email, message });
       await newContact.save();
 
-      res.status(201).json({ success: true, data: newContact });
+      NextResponse.json({ success: true, data: newContact });
+      return NextResponse.json({ message: 'Form submitted successfully!' }, { status: 200 });
     } catch (error) {
-      res.status(500).json({ success: false, error: error.message });
+      NextResponse.json({ success: false, error: error.message });
+      return NextResponse.json({ message: 'An error occurred. Please try again later.' }, { status: 500 });
     }
-  } else {
-    res.status(405).json({ error: "Method not allowed" });
-  }
 }

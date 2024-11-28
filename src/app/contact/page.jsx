@@ -5,6 +5,7 @@ import { toast } from '@/hooks/use-toast'; // Ensure the toast hook is correctly
 import { useState } from 'react';
 import axios from 'axios';
 
+
 const ContactPage = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -19,22 +20,25 @@ const ContactPage = () => {
         setFormData({ ...formData, [name]: value });
     };
 
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log(formData); // Print formData to check its contents when submitting
+    //     // Submit the form or process the data...
+
+    // };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
 
         try {
-            const response = await axios.post('/api/content', formData);
+            const response = await axios.post('/api/contact', formData);
 
-            if (response.status === 200) {
-                toast.success("Form submitted successfully!");
-                setFormData({ name: '', email: '', message: '' }); // Reset form
-            } else {
-                toast.error("An error occurred. Please try again.");
-            }
+            alert('Form submitted successfully!');
         } catch (error) {
-            console.error(error.response?.data || error.message);
-            toast.error(error.response?.data?.error || "An error occurred. Please try again.");
+            console.error('Error submitting form:', error);
+            // Error toast
+            alert('An error occurred. Please try again later.');
         } finally {
             setLoading(false);
         }
