@@ -16,9 +16,17 @@ export async function POST(req, res) {
       await newContact.save();
 
       // NextResponse.json({ success: true, data: newContact });
-      return NextResponse.json({ message: 'Form submitted successfully!' }, { status: 200 });
+      return NextResponse.json({ 
+        message: 'Form submitted successfully!',
+        success: true,
+        data: newContact
+       }, { status: 200 });
     } catch (error) {
       // NextResponse.json({ success: false, error: error.message });
-      return NextResponse.json({ message: 'An error occurred. Please try again later.' }, { status: 500 });
+      return NextResponse.json({ 
+        message: 'An error occurred. Please try again later.',
+        success: false,
+        error: error.message
+       }, { status: 500 });
     }
 }
