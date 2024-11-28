@@ -3,6 +3,7 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import FlootingComponent from "@/components/FlootingComponent";
 import Footer from "@/components/Footer";
+import { Analytics } from '@vercel/analytics/next';
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
           <FlootingComponent />
           {children}
           <Footer />
+          <Analytics />
         </div>
       </body>
     </html>
