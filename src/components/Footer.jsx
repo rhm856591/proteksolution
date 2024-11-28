@@ -62,15 +62,15 @@ const Footer = () => {
                         </Link>
                     </div>
                     <p className="text-sm">Stay updated with our latest news and offers</p>
-                    <form className="mt-4 flex flex-col md:flex-row items-center gap-2 md:gap-0">
+                    <form className="mt-4 flex flex-col sm:flex-row items-center gap-2 w-full max-w-lg mx-auto">
                         <input
                             type="email"
                             placeholder="Enter your email"
-                            className="p-2 rounded-md outline-none md:rounded-l-md md:rounded-r-none border-none text-black w-full md:w-auto"
+                            className="p-2 rounded-md outline-none border-none text-black w-full flex-1"
                         />
                         <button
                             type="submit"
-                            className="bg-yellow-400 text-black py-2 px-4 rounded-md md:rounded-r-md md:rounded-l-none hover:bg-yellow-500 transition-all duration-300"
+                            className="bg-yellow-400 text-black py-2 px-4 rounded-md hover:bg-yellow-500 transition-all duration-300 sm:w-auto"
                         >
                             Subscribe
                         </button>
