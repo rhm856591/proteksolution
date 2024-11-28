@@ -25,7 +25,7 @@ export default function Home() {
       {isLoading ? (
         <>
           {/* Skeleton for Carousel */}
-          <Skeleton className="w-full h-56 sm:h-72 md:h-96" />
+          <Skeleton className="w-full h-56 sm:h-96 md:h-96" />
 
           {/* Skeleton for Ourservice */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
