@@ -3,8 +3,6 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import FlootingComponent from "@/components/FlootingComponent";
 import Footer from "@/components/Footer";
-import { Analytics } from '@vercel/analytics/next';
-import { Toaster } from "@/components/ui/toaster";
 // import { Toaster } from 'react-hot-toast';
 
 const geistSans = localFont({
@@ -34,7 +32,6 @@ export default function RootLayout({ children }) {
           <FlootingComponent />
           {children}
           <Footer />
-          <Analytics />
         </div>
       </body>
     </html>
