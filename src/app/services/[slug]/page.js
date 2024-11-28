@@ -32,7 +32,7 @@ const ServiceDetailPage = async ({ params }) => {
 
         />
       </div>
-      <div className="flex justify-center items-center"><pre className="text-gray-600 font-[geistSans] mt-6 text-lg leading-relaxed">{service.description}</pre></div>
+      <div className="flex justify-center w-auto items-center"><p className="text-gray-600 font-[geistSans] mt-6 text-lg leading-relaxed">{service.description}</p></div>
     </div>
   );
 };
