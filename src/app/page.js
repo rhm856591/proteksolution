@@ -25,39 +25,36 @@ export default function Home() {
       {isLoading ? (
         <>
           {/* Skeleton for Carousel */}
-          <Skeleton className="w-full h-96" />
+          <Skeleton className="w-full h-56 sm:h-72 md:h-96" />
 
           {/* Skeleton for Ourservice */}
-          <div className="grid grid-cols-1 py-8 px-6 md:grid-cols-3 gap-6">
-            <Skeleton className="h-[280px] w-[365px]" />
-            <Skeleton className="h-[280px] w-[365px]" />
-            <Skeleton className="h-[280px] w-[365px]" />
-            <Skeleton className="h-[280px] w-[365px]" />
-            <Skeleton className="h-[280px] w-[365px]" />
-            <Skeleton className="h-[280px] w-[365px]" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
+            <Skeleton className="h-40 sm:h-60 md:h-[280px] w-full" />
+            <Skeleton className="h-40 sm:h-60 md:h-[280px] w-full" />
+            <Skeleton className="h-40 sm:h-60 md:h-[280px] w-full" />
           </div>
 
           {/* Skeleton for WhyChooseUs */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <Skeleton className="h-36" />
-            <Skeleton className="h-36" />
-            <Skeleton className="h-36" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
+            <Skeleton className="h-24 sm:h-28 md:h-36 w-full" />
+            <Skeleton className="h-24 sm:h-28 md:h-36 w-full" />
+            <Skeleton className="h-24 sm:h-28 md:h-36 w-full" />
           </div>
 
           {/* Skeleton for Gallery */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Skeleton className="h-32" />
-            <Skeleton className="h-32" />
-            <Skeleton className="h-32" />
-            <Skeleton className="h-32" />
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 p-4">
+            <Skeleton className="h-24 sm:h-28 md:h-32 w-full" />
+            <Skeleton className="h-24 sm:h-28 md:h-32 w-full" />
+            <Skeleton className="h-24 sm:h-28 md:h-32 w-full" />
+            <Skeleton className="h-24 sm:h-28 md:h-32 w-full" />
           </div>
 
           {/* Skeleton for OurClients */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Skeleton className="h-20 w-20 rounded-full" />
-            <Skeleton className="h-20 w-20 rounded-full" />
-            <Skeleton className="h-20 w-20 rounded-full" />
-            <Skeleton className="h-20 w-20 rounded-full" />
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4">
+            <Skeleton className="h-16 sm:h-20 w-16 sm:w-20 rounded-full" />
+            <Skeleton className="h-16 sm:h-20 w-16 sm:w-20 rounded-full" />
+            <Skeleton className="h-16 sm:h-20 w-16 sm:w-20 rounded-full" />
+            <Skeleton className="h-16 sm:h-20 w-16 sm:w-20 rounded-full" />
           </div>
         </>
       ) : (
