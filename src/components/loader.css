@@ -1,0 +1,13 @@
+/* Add this to your global Tailwind CSS file if needed */
+@keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .animate-spin-slow {
+    animation: spin-slow 2.5s linear infinite;
+  }
